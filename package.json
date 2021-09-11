@@ -1,12 +1,12 @@
 {
-  "name": "com.alexmalyutindev.fbm-parallax-clouds-buildin",
+  "name": "com.alexmalyutindev.fbm-parallax-clouds",
   "displayName": "FBM Parallax Clouds",
   "description": "FBM Paralax Clouds for Unity build-in render pipeline.",
-  "homepage": "https://github.com/alexmalyutindev/unity-fbm-clouds-buildin",
+  "homepage": "https://github.com/alexmalyutindev/unity-fbm-clouds",
   "version": "1.0.0",
   "unity": "2018.3",
   "license": "MIT",
-  "author": "Alex Makyutin <alex.malyutin.dev@gmail.com> (https://github.com/alexmalyutindev)",
+  "author": "Alex Malyutin <alex.malyutin.dev@gmail.com> (https://github.com/alexmalyutindev)",
   "dependencies": {
   }
 }
