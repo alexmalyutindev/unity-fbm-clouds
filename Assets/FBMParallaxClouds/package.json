@@ -7,6 +7,19 @@
   "unity": "2018.3",
   "license": "MIT",
   "author": "Alex Malyutin <alex.malyutin.dev@gmail.com> (https://github.com/alexmalyutindev)",
-  "dependencies": {
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmalyutindev/unity-fbm-clouds.git"
+  },
+  "dependencies": {},
+  "keywords": [
+    "shader"
+  ],
+  "samples": [
+    {
+      "displayName": "Demo",
+      "description": "RBM Clouds Demo",
+      "path": "Samples~/Demo"
+    }
+  ]
 }
