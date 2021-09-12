@@ -1,6 +1,9 @@
 FBM Paralax Clouds for Unity build-in render pipeline.
 ==========
 
+[![Build](https://github.com/alexmalyutindev/unity-fbm-clouds/actions/workflows/upm-ci.yml/badge.svg)](https://github.com/alexmalyutindev/unity-fbm-clouds/actions/workflows/upm-ci.yml)
+[![Release](https://img.shields.io/github/v/release/alexmalyutindev/unity-fbm-clouds)](https://github.com/alexmalyutindev/unity-fbm-clouds/releases)
+
 Clouds are using Fractal Brownian Motion and Raymarching prarallax offset method:
 
 ![anim](https://github.com/alexmalyutindev/unity-fbm-clouds-buildin/blob/master/Recordings/gif_animation_001.gif)
