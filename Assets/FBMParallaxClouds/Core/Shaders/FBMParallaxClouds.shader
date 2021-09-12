@@ -2,15 +2,15 @@ Shader "Clouds/FBMParallaxClouds"
 {
 	Properties
 	{
-		[MainTexture] _MainTex ("Texture", 2D) = "white" {}
-		_Gradient ("Gradient", 2D) = "white" {}
-		_Height ("Height", Range(0.0, 5.0)) = 1.0
+		[HDR] _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
+		_ColorRamp ("Gradient", 2D) = "white" {}
+
 		_Scale ("Scale", Float) = 2
 
-		_CloudsSpeed ("Clouds speed", Float) = 25.0
-
+		_Height ("Height", Range(0.0, 5.0)) = 1.0
 		_FadeHeight ("Fade Height", Range(0.0, 1.0)) = 0.0
 		_FadeSmooth ("Fade Smooth", Range(0.0, 1.0)) = 0.0
+		_CloudsSpeed ("Clouds speed", Float) = 25.0
 
 		_ClipFade ("Clip fade", Range(0.001, 5.0)) = 0.77
 		_ClipFactor ("Clip factor", Range(0.0, 5.0)) = 0.74
@@ -53,15 +53,21 @@ Shader "Clouds/FBMParallaxClouds"
 				float4 positionCS : SV_POSITION;
 			};
 
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-			sampler2D _Gradient;
-			float4 _Gradient_ST;
+			float4 _BaseColor;
+			sampler2D _ColorRamp;
+			float4 _ColorRamp_ST;
+			sampler2D _CameraDepthTexture;
+
+			float _Scale;
 
 			float _Height;
-			float _Scale;
 			float _FadeHeight;
 			float _FadeSmooth;
+
+			float _CloudsSpeed;
+
+			float _ClipFactor;
+			float _ClipFade;
 
 			v2f vert (appdata v)
 			{
@@ -71,18 +77,13 @@ Shader "Clouds/FBMParallaxClouds"
 
 				TANGENT_SPACE_ROTATION;
 				float3 viewDirWS = WorldSpaceViewDir(v.positionOS);
-				o.viewDirTS = mul(rotation, viewDirWS); 
+				o.viewDirTS = mul(rotation, viewDirWS);
 
 				o.grabPos = ComputeGrabScreenPos(o.positionCS);
 
 				UNITY_TRANSFER_FOG(o,o.positionCS);
 				return o;
 			}
-
-			sampler2D _CameraDepthTexture;
-			float _ClipFactor;
-			float _ClipFade;
-			float _CloudsSpeed;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
@@ -96,10 +97,10 @@ Shader "Clouds/FBMParallaxClouds"
 				float clipBlend = saturate((depthDiff - height * _ClipFactor) / _ClipFade);
 
 				float2 gUV = parallaxedHeight.xx;
-				fixed4 col = tex2D(_Gradient, TRANSFORM_TEX(gUV, _Gradient));
-				col *= tex2D(_MainTex, uv);
-				
+				fixed4 col = tex2D(_ColorRamp, TRANSFORM_TEX(gUV, _ColorRamp));
+
 				col.a = smoothstep(_FadeHeight, _FadeHeight + _FadeSmooth, parallaxedHeight) * clipBlend;
+				col *= _BaseColor;
 
 				UNITY_APPLY_FOG(i.fogCoord, col);
 				return col;
