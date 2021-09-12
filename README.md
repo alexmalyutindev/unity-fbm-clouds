@@ -1,4 +1,4 @@
-FBM Paralax Clouds for Unity build-in render pipeline.
+FBM Parallax Clouds for Unity build-in render pipeline.
 ==========
 
 [![Build](https://github.com/alexmalyutindev/unity-fbm-clouds/actions/workflows/upm-ci.yml/badge.svg)](https://github.com/alexmalyutindev/unity-fbm-clouds/actions/workflows/upm-ci.yml)
