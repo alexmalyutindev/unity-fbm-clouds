@@ -10,13 +10,33 @@ Clouds are using Fractal Brownian Motion and Raymarching prarallax offset method
 
 Installation
 ------------
-Find the manifest.json file in the Packages folder of your project and add a line to `dependencies` field:
+### Using git: 
+Please add the following line to `dependencies` sections to the package manifest file (`Packages/manifest.json`).
 
-* `"com.alexmalyutindev.fbm-parallax-clouds": "https://github.com/alexmalyutindev/unity-fbm-clouds.git#latest"`
+- `"com.alexmalyutindev.fbm-parallax-clouds": "https://github.com/alexmalyutindev/unity-fbm-clouds.git#latest"`
 
 Or, you can add this package using PackageManager `Add package from git URL` option:
 
-* `https://github.com/alexmalyutindev/unity-fbm-clouds.git#latest`
+- `https://github.com/alexmalyutindev/unity-fbm-clouds.git#latest`
+
+### Via NPM Registry:
+Please add the following sections to the package manifest file (`Packages/manifest.json`).
+
+To the `scopedRegistries` section:
+
+```
+{
+  "name": "Alex Malyutin",
+  "url": "https://registry.npmjs.com",
+  "scopes": [ "com.alexmalyutindev" ]
+}
+```
+
+To the `dependencies` section:
+
+```
+"com.alexmalyutindev.fbm-parallax-clouds": "1.0.0"
+```
 
 References
 ----------
